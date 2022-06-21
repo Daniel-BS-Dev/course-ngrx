@@ -1,0 +1,40 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               id 
+            </th>
+            <th>
+                Nome
+             </th>
+             <th>
+                idade
+             </th>
+             <th>
+                perfil
+             </th>
+             <th>
+                ação
+             </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of userList | async">
+            <td>
+               {{ user.id }}
+            </td>
+            <td>
+                {{ user.name }}
+             </td>
+             <td>
+                {{ user.age }}
+             </td>
+             <td>
+                {{ user.profile }}
+             </td>
+             <td>
+                ação
+             </td>
+        </tr>
+    </tbody>
+</table>
