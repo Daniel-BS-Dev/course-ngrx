@@ -1,3 +1,4 @@
+import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -10,7 +11,8 @@ import { UserModule } from './user/user.module';
   ],
   imports: [
     BrowserModule,
-    UserModule
+    UserModule,
+    StoreModule.forRoot({}),
   ],
   providers: [],
   bootstrap: [AppComponent]

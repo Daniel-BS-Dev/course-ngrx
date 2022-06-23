@@ -4,5 +4,3 @@ export interface User {
     age: number,
     profile: string
 }
-
-export interface Users extends Array<User> {}

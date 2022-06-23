@@ -1,8 +1,10 @@
-import { UserComponent } from './../user.component';
-import { Users } from './../Model/user';
+import { getAllSearchUsers } from './../../store/user-selector';
+import { LoadUsers } from './../../store/user-actions';
+import { User } from './../Model/user';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { Store } from '@ngrx/store';
+import { getAllUsers } from 'src/app/store/user-selector';
 
 @Component({
   selector: 'app-list',
@@ -12,11 +14,19 @@ import { UserService } from '../user.service';
 export class ListComponent implements OnInit {
 
 
-  constructor(private service: UserService) { }
+  constructor(private store: Store) { }
 
-  userList: Observable<Users> = this.service.getUsers()
+  userList: Observable<User[]> = this.store.select(getAllUsers)
+ 
+  test!: User[]
 
   ngOnInit(): void {
+    this.store.dispatch(LoadUsers());
+
+    this.store.select(getAllSearchUsers,{perfile:'administrador'})
+    .subscribe((x: User[]) => {
+      this.test = x;
+    })
   }
 
 }
